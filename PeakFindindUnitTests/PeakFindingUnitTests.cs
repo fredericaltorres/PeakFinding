@@ -78,6 +78,19 @@ namespace PeakFindindUnitTests
             var r = PeakFinder.FindPeakElement(l, 0, l.Count-1);
             Assert.AreEqual(999, r);
         }
+
+        [TestMethod]
+        public void FindPeakElement_OnTheRight_VeryVeryLongList()
+        {
+            var l = GetListOfElement(10000);
+            var r = PeakFinder.FindPeakElement(l, 0, l.Count-1);
+            Assert.AreEqual(9999, r);
+
+            l = GetListOfElement(100000);
+            r = PeakFinder.FindPeakElement(l, 0, l.Count-1);
+            Assert.AreEqual(99999, r);
+        }
+
         [TestMethod]
         public void FindPeakElement_OnTheLeft_VeryLongList()
         {
@@ -86,6 +99,21 @@ namespace PeakFindindUnitTests
             var r = PeakFinder.FindPeakElement(l, 0, l.Count-1);
             Assert.AreEqual(0, r);
         }
+
+        [TestMethod]
+        public void FindPeakElement_OnTheLeft_VeryVeryLongList()
+        {
+            var l = GetListOfElement(10000);
+            l.Reverse();
+            var r = PeakFinder.FindPeakElement(l, 0, l.Count-1);
+            Assert.AreEqual(0, r);
+
+            l = GetListOfElement(100000);
+            l.Reverse();
+            r = PeakFinder.FindPeakElement(l, 0, l.Count-1);
+            Assert.AreEqual(0, r);
+        }
+
         [TestMethod]
         public void IsPeakElement_WithinBoundary()
         {
