@@ -9,9 +9,15 @@ namespace PeakFindindUnitTests
     [TestClass]
     public class UnitTePeakFinderUnitTests
     {
-        List<int> TestList0 = new List<int>() { 1, 3, 4, 3, 5, 1, 3 };
+        private List<int> GetListOfElement(int max)
+        {
+            var l = new List<int> ();
+            for(var i=0; i<max; i++)
+                l.Add(i);
+            return l;
+        }
 
-         [TestMethod]
+        [TestMethod]
         public void FindPeakElement_IsPeakElementAtIndex()
         {
             var l = new List<int> { 1, 3, 2 }; // Peak is 3[1]
@@ -23,7 +29,6 @@ namespace PeakFindindUnitTests
             l = new List<int> { 2, 3 }; // Peak is 3[0]
             Assert.AreEqual(1, PeakFinder.FindPeakElement(l, 1, l.Count-1));
         }
-
         [TestMethod]
         public void FindPeakElement_OnTheLeft()
         {
@@ -48,8 +53,7 @@ namespace PeakFindindUnitTests
             l = new List<int> { 7, 6, 5, 4, 3, 2, 1 };// Peak is 7[0]
             Assert.AreEqual(0, PeakFinder.FindPeakElement(l, 0, l.Count-1));
         }
-
-         [TestMethod]
+        [TestMethod]
         public void FindPeakElement_OnTheRight()
         {
             var l = new List<int> { 1, 2, 3, 4, 1 };// Peak is 4[3]
@@ -67,7 +71,21 @@ namespace PeakFindindUnitTests
             l = new List<int> {1, 2, 6, 5, 3, 7, 4};// Peak is 2[6]
             Assert.AreEqual(2, PeakFinder.FindPeakElement(l, 0, l.Count-1));
         }
-
+        [TestMethod]
+        public void FindPeakElement_OnTheRight_VeryLongList()
+        {
+            var l = GetListOfElement(1000);
+            var r = PeakFinder.FindPeakElement(l, 0, l.Count-1);
+            Assert.AreEqual(999, r);
+        }
+        [TestMethod]
+        public void FindPeakElement_OnTheLeft_VeryLongList()
+        {
+            var l = GetListOfElement(1000);
+            l.Reverse();
+            var r = PeakFinder.FindPeakElement(l, 0, l.Count-1);
+            Assert.AreEqual(0, r);
+        }
         [TestMethod]
         public void IsPeakElement_WithinBoundary()
         {
