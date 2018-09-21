@@ -8,11 +8,11 @@ namespace PeakFinding
         public static bool IsPeakElement(List<int> list, int index)
         {
             if(index == 0) // No left boundary
-                return (list[index] >= list[index+1]);
+                return (list[index] >= list[index + 1]);
             else if(index == list.Count-1) // No right boundary
-                return (list[index] >= list[index-1]);
+                return (list[index] >= list[index - 1]);
             else
-                return (list[index] >= list[index-1]) && (list[index] >= list[index+1]);
+                return (list[index] >= list[index - 1]) && (list[index] >= list[index + 1]);
         }
         public static int FindPeakElement(List<int> list, int start, int last)
         {
@@ -31,5 +31,4 @@ namespace PeakFinding
             throw new ArgumentException();
         }
     }
-
 }

@@ -49,7 +49,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PeakFinder2D .cs" />
     <Compile Include="PeakFinder.cs" />
+    <Compile Include="PeakFinding2DUnitTests.cs" />
     <Compile Include="PeakFindingUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
